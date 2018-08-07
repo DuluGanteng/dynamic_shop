@@ -50,20 +50,20 @@ endif;
 														if (isset($_SESSION['user']['menus']['three'])) :
 															foreach ($_SESSION['user']['menus']['three'] as $subsubmenu) :
 																if ($subsubmenu->menu_parent == $submenu->kd_menu) :
-																	$user_menu .= render_child_menu(url_title($menu->menu_title, '_', TRUE).'/'.url_title($submenu->menu_title, '_', TRUE).'/'.$subsubmenu->menu_link, $subsubmenu->menu_title, $subsubmenu->menu_nm);
+																	$user_menu .= render_child_menu($menu->menu_modul.'/'.url_title($menu->menu_title, '_', TRUE).'/'.url_title($submenu->menu_title, '_', TRUE).'/'.$subsubmenu->menu_link, $subsubmenu->menu_title, $subsubmenu->menu_nm);
 																endif;
 															endforeach;
 														endif;
 														$user_menu .= close_parent_menu();
 													else :
-														$user_menu .= render_child_menu(url_title($menu->menu_title, '_', TRUE).'/'.$submenu->menu_link, $submenu->menu_title, $submenu->menu_nm);
+														$user_menu .= render_child_menu($menu->menu_modul.'/'.url_title($menu->menu_title, '_', TRUE).'/'.$submenu->menu_link, $submenu->menu_title, $submenu->menu_nm);
 													endif;
 												endif;
 											endforeach;
 										endif;
 										$user_menu .= close_parent_menu();
 									else :
-										$user_menu .= render_individual_menu($menu->menu_modul, $menu->menu_link, $menu->menu_title, $menu->menu_icon, $menu->menu_nm);
+										$user_menu .= render_individual_menu($menu->menu_modul.'/'.$menu->menu_link, $menu->menu_title, $menu->menu_icon, $menu->menu_nm);
 									endif;
 								endforeach;
 							endif;
