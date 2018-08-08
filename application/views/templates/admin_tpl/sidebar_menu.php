@@ -39,7 +39,6 @@ endif;
 							$user_menu = '';
 							if (isset($_SESSION['user']['menus']['one'])) :
 								foreach ($_SESSION['user']['menus']['one'] as $menu) :
-									$kd_menus[] = $menu->kd_menu;
 									if ($menu->menu_link == '#') :
 										$user_menu .= open_parent_menu($menu->menu_title, $menu->menu_icon, $menu->menu_nm, 'parent');
 										if (isset($_SESSION['user']['menus']['two'])) :

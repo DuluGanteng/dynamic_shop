@@ -6,6 +6,11 @@ class Data_barang extends MY_Controller {
 
 	public function __construct() {
 		parent::__construct();
+		parent::datatables_assets();
+		$this->load->model(array('model_auth/m_access'));
+
+		$access = $this->m_access->read_user_access('data_barang', 'Management Items');
+		$_SESSION['user']['access'] = array('create' => $access->create, 'read' => $access->read, 'update' => $access->update, 'delete' => $access->delete);
 	}
 
 	/*
@@ -48,7 +53,10 @@ class Data_barang extends MY_Controller {
 	}
 
 	public function table_data() {
-		$data = $this->tm_deliveryorder->ssp_table();
+		$this->load->library(array('ssp'));
+		$this->load->model(array('model_barang/tm_barang'));
+
+		$data = $this->tm_barang->ssp_table();
 		echo json_encode(
 			SSP::simple( $_GET, $data['sql_details'], $data['table'], $data['primaryKey'], $data['columns'], $data['joinQuery'], $data['where'] )
 		);

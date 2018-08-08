@@ -53,14 +53,14 @@ $data['btn_add_id'] = 'idBtnAdd'.$box_type;
 		<div class="x_panel">
 			<div class="x_title">
 				<h2><?php echo $box_title; ?></h2>
-				<ul class="nav navbar-right panel_toolbox">
+				<ul class="nav navbar-right panel_toolbox" <?php echo $btn_add == TRUE && $_SESSION['user']['access']['create']?'':'style="margin-right: -20px;"'; ?>>
 					<?php
 					if ($btn_hide == TRUE) :
 						?>
 						<li><a class="collapse-link" title="Sembunyikan"><i class="fa fa-chevron-up"></i></a></li>
 						<?php
 					endif;
-					if ($btn_add == TRUE) :
+					if ($btn_add == TRUE && $_SESSION['user']['access']['create']) :
 						?>
 						<li><a id="<?php echo $data['btn_add_id']; ?>" class="add-data-link" title="Tambah Data"><i class="fa fa-plus"></i></a></li>
 						<?php
