@@ -2,7 +2,6 @@ application/cache/
 application/hooks/
 application/logs/
 application/.htaccess
-assets/
 system/
 db_backup/
 .htaccess
