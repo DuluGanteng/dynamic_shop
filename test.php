@@ -1,2 +1,11 @@
 <?php
-echo substr($_SERVER['PHP_SELF'], 0, -9);
+function hash_text($text) {
+	$options = [
+		'cost' => 12,
+	];
+	$result = password_hash($text, PASSWORD_BCRYPT, $options);
+
+	return $result;
+}
+
+echo hash_text('admin_ubait');

@@ -32,7 +32,7 @@ class Tm_barang extends CI_Model {
 		return $data;
 	}
 
-	private function tbl_btn($id, $var) {
+	private function tbl_btn($id = '', $var = '') {
 		$this->load->helper(array('btn_access_helper'));
 
 		$read_access = $_SESSION['user']['access']['read'];
@@ -48,5 +48,16 @@ class Tm_barang extends CI_Model {
 		$btn_group = group_btns($btns);
 
 		return $btn_group;
+	}
+
+	public function get_data($id = '') {
+		$this->load->model(array('model_basic/base_query'));
+		$row = $this->base_query->get_row($this->tbl_name, array($this->p_key => $id));
+		if (!empty($row)) :
+			$data = array('kd_mbarang' => $row->kd_mbarang, 'master_type_kd' => $row->master_type_kd, 'barcode' => $row->barcode, 'nm_barang' => $row->nm_barang, 'deskripsi' => $row->deskripsi);
+		else :
+			$data = array('kd_mbarang' => '', 'master_type_kd' => '', 'barcode' => '', 'nm_barang' => '', 'deskripsi' => '');
+		endif;
+		return $data;
 	}
 }
