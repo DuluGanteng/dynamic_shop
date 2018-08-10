@@ -1,4 +1,5 @@
 application/cache/
+application/config/
 application/hooks/
 application/logs/
 application/.htaccess
